@@ -663,7 +663,15 @@ function openPacienteDetail(id) {
     '<div><div class="detail-label">Edad</div><div class="detail-value">' + (calcEdad(p.FechaNacimiento)||p.Edad||'—') + ' años</div></div>' +
     '<div><div class="detail-label">Tipo Sangre</div><div class="detail-value">' + (p.TipoSangre||'—') + '</div></div>' +
     '<div><div class="detail-label">Sexo</div><div class="detail-value">' + (p.Sexo||'—') + '</div></div>' +
-    '<div><div class="detail-label">Estado</div><div class="detail-value">' + (p.Estado||'Activo') + '</div></div>' +
+    '<div class="detail-section" style="background:#f0f9ff;border-radius:10px;padding:12px;margin-bottom:8px">' +
+    '<div class="detail-label" style="color:#0f2a4a;font-weight:700">⚡ VISTA RÁPIDA</div>' +
+    '<div style="margin-top:8px"><div class="detail-label">Último Tratamiento</div>' +
+    '<div class="detail-value" style="margin-top:4px;color:#1a7a6e;font-weight:500">' + (ultimoTratamiento ? ultimoTratamiento.Tratamiento : 'Sin tratamiento registrado') + '</div></div>' +
+    '<div style="margin-top:8px"><div class="detail-label">APP (Antecedentes Personales Patológicos)</div>' +
+    (appPac.length ? appPac.map(function(a) { return '<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #e0f0ff"><div style="font-size:13px;color:#1a2635">' + a.Diagnostico + (a.Notas ? ' — <span style="color:#6b7f96">' + a.Notas + '</span>' : '') + '</div><div style="font-size:11px;color:#6b7f96;white-space:nowrap;margin-left:8px">' + formatDate(a.Fecha) + '</div></div>'; }).join('') : '<div style="font-size:13px;color:#6b7f96;margin-top:4px">Sin registros</div>') +
+    '<button onclick="abrirAgregarAPP(\'' + id + '\')" style="margin-top:10px;width:100%;padding:10px;background:#0f2a4a;color:white;border:none;border-radius:8px;cursor:pointer;font-size:13px">+ Agregar APP</button>' +
+    '</div></div>' +
+    '<div class="detail-section"><div class="detail-label">Antecedentes Patológicos</div><div class="detail-value" style="margin-top:4px">' + (p.AntecedentesPatologicos||'Ninguno') + '</div></div>' +
     '</div></div>' +
     '<div class="detail-section"><div class="detail-label">Antecedentes</div><div class="detail-value" style="margin-top:4px">' + (p.AntecedentesPatologicos||'Ninguno') + '</div></div>' +
     '<div class="detail-section"><div class="detail-label">Alergias</div><div class="detail-value" style="margin-top:4px">' + (p.Alergias||'Ninguna') + '</div></div>' +
