@@ -480,8 +480,9 @@ function guardarAtencion() {
   var tipo   = document.getElementById('reg-tipo').value;
   var precio = document.getElementById('reg-precio').value;
   var estado = document.getElementById('reg-estado').value;
-  var motivo = document.getElementById('reg-motivo').value;
-  var obs    = document.getElementById('reg-obs').value;
+  var motivo      = document.getElementById('reg-motivo').value;
+  var tratamiento = document.getElementById('reg-tratamiento').value;
+  var obs         = document.getElementById('reg-obs').value;
 
   if (!pacID) { showToast('⚠ Selecciona un paciente'); return; }
   if (!fecha) { showToast('⚠ Indica la fecha'); return; }
