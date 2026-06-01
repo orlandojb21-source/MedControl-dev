@@ -402,11 +402,13 @@ var API_URL = "https://script.google.com/macros/s/AKfycbwOg2nM76qWqWx7cfPOQopsmV
 function loadAll() {
   return new Promise(function(resolve) {
     Promise.all([
-      fetch(API_URL + '?action=getPacientes').then(function(r){ return r.json(); }),
-      fetch(API_URL + '?action=getAtenciones').then(function(r){ return r.json(); })
-    ]).then(function(results) {
-      try { pacientes  = results[0].success ? results[0].data : []; } catch(e) { pacientes = []; }
-      try { atenciones = results[1].success ? results[1].data : []; } catch(e) { atenciones = []; }
+  fetch(API_URL + '?action=getPacientes').then(function(r){ return r.json(); }),
+  fetch(API_URL + '?action=getAtenciones').then(function(r){ return r.json(); }),
+  fetch(API_URL + '?action=getAPP').then(function(r){ return r.json(); })
+]).then(function(results) {
+  try { pacientes  = results[0].success ? results[0].data : []; } catch(e) { pacientes = []; }
+  try { atenciones = results[1].success ? results[1].data : []; } catch(e) { atenciones = []; }
+  try { appRecords = results[2].success ? results[2].data : []; } catch(e) { appRecords = []; }
       populatePacienteSelect();
       renderPacientes();
       renderHoy();
