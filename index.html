@@ -647,6 +647,8 @@ function openPacienteDetail(id) {
   var p = pacientes.find(function(x) { return x.ID === id; });
   if (!p) return;
   var atPac = atenciones.filter(function(a) { return a.PacienteID === id; }).sort(function(a,b) { return b.Fecha > a.Fecha ? 1 : -1; });
+  var appPac = appRecords.filter(function(a) { return a.PacienteID === id; }).sort(function(a,b) { return b.Fecha > a.Fecha ? 1 : -1; });
+  var ultimoTratamiento = atPac.find(function(a) { return a.Tratamiento && a.Tratamiento.trim() !== ''; });
   document.getElementById('detail-title').textContent = p.NombreCompleto || 'Paciente';
   document.getElementById('detail-body').innerHTML =
     '<div style="padding:0 20px">' +
